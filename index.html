@@ -1,1855 +1,1905 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IRONCORE FITNESS | Build Your Stronger Self</title>
+<title>NOIRÉ — Coffee & Co.</title>
 
-    <style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* =====================================================
-           BASIC RESET
-        ===================================================== */
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* =========================================================
+   RESET
+========================================================= */
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #050505;
-            color: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            /* CUSTOM DUMBBELL CURSOR */
-            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg transform='rotate(-25 20 20)' fill='%23ff3c00' stroke='white' stroke-width='1.5'%3E%3Crect x='5' y='12' width='5' height='16' rx='1'/%3E%3Crect x='30' y='12' width='5' height='16' rx='1'/%3E%3Crect x='10' y='16' width='20' height='8' rx='2'/%3E%3Crect x='2' y='9' width='4' height='22' rx='1'/%3E%3Crect x='34' y='9' width='4' height='22' rx='1'/%3E%3C/g%3E%3C/svg%3E") 20 20, auto;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
+body {
+    background: #15110d;
+    color: #eee5d7;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
 
-        /* =====================================================
-           BACKGROUND EFFECT SYSTEM
-        ===================================================== */
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        body::before {
 
-            content: "";
+/* =========================================================
+   VARIABLES
+========================================================= */
 
-            position: fixed;
+:root {
 
-            inset: 0;
+    --cream: #eee5d7;
+    --muted: #aaa092;
+    --brown: #5c3824;
+    --espresso: #24150e;
+    --gold: #c8a46b;
+    --dark: #15110d;
 
-            pointer-events: none;
+}
 
-            z-index: -5;
 
-            background:
+/* =========================================================
+   GRAIN EFFECT
+========================================================= */
 
-                radial-gradient(
-                    circle at 20% 20%,
-                    rgba(255, 60, 0, 0.14),
-                    transparent 30%
-                ),
+body::before {
 
-                radial-gradient(
-                    circle at 80% 40%,
-                    rgba(255, 60, 0, 0.10),
-                    transparent 30%
-                ),
+    content: "";
 
-                radial-gradient(
-                    circle at 50% 90%,
-                    rgba(255, 60, 0, 0.08),
-                    transparent 35%
-                );
+    position: fixed;
 
-            animation: backgroundGlow 8s ease-in-out infinite alternate;
-        }
+    inset: 0;
 
-        @keyframes backgroundGlow {
+    pointer-events: none;
 
-            from {
-                opacity: 0.6;
-                transform: scale(1);
-            }
+    z-index: 9990;
 
-            to {
-                opacity: 1;
-                transform: scale(1.08);
-            }
-        }
+    opacity: .045;
 
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 
-        /* Moving grid */
+}
 
-        body::after {
 
-            content: "";
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
 
-            position: fixed;
+.cursor {
 
-            inset: 0;
+    position: fixed;
 
-            pointer-events: none;
+    width: 48px;
+    height: 48px;
 
-            z-index: -4;
+    pointer-events: none;
 
-            opacity: 0.12;
+    z-index: 99999;
 
-            background-image:
+    transform: translate(-50%, -50%);
 
-                linear-gradient(
-                    rgba(255, 60, 0, 0.15) 1px,
-                    transparent 1px
-                ),
+}
 
-                linear-gradient(
-                    90deg,
-                    rgba(255, 60, 0, 0.15) 1px,
-                    transparent 1px
-                );
+.cursor-cup {
 
-            background-size: 80px 80px;
+    position: absolute;
 
-            animation: gridMove 15s linear infinite;
-        }
+    left: 7px;
+    top: 18px;
 
-        @keyframes gridMove {
+    width: 30px;
+    height: 19px;
 
-            from {
-                background-position: 0 0;
-            }
+    background: linear-gradient(
+        145deg,
+        #f4e8d5,
+        #bca486
+    );
 
-            to {
-                background-position: 80px 80px;
-            }
+    border-radius: 3px 3px 11px 11px;
 
-        }
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.45);
 
+}
 
-        /* =====================================================
-           PARTICLES
-        ===================================================== */
+.cursor-coffee {
 
-        .particles {
+    position: absolute;
 
-            position: fixed;
+    width: 24px;
+    height: 7px;
 
-            inset: 0;
+    left: 3px;
+    top: -4px;
 
-            pointer-events: none;
+    background: #402015;
 
-            overflow: hidden;
+    border-radius: 50%;
 
-            z-index: -2;
-        }
+}
 
-        .particle {
+.cursor-handle {
 
-            position: absolute;
+    position: absolute;
 
-            width: 4px;
-            height: 4px;
+    width: 10px;
+    height: 11px;
 
-            background: #ff3c00;
+    border: 3px solid #cbb89e;
 
-            border-radius: 50%;
+    border-left: none;
 
-            box-shadow:
-                0 0 8px #ff3c00,
-                0 0 20px rgba(255, 60, 0, 0.7);
+    border-radius: 0 10px 10px 0;
 
-            animation: floatParticle linear infinite;
+    right: -9px;
 
-            opacity: 0;
-        }
+    top: 2px;
 
-        .particle:nth-child(1) {
-            left: 5%;
-            animation-duration: 8s;
-            animation-delay: 1s;
-        }
+}
 
-        .particle:nth-child(2) {
-            left: 15%;
-            animation-duration: 12s;
-            animation-delay: 3s;
-        }
+.cursor-steam {
 
-        .particle:nth-child(3) {
-            left: 25%;
-            animation-duration: 10s;
-            animation-delay: 2s;
-        }
+    position: absolute;
 
-        .particle:nth-child(4) {
-            left: 35%;
-            animation-duration: 14s;
-            animation-delay: 5s;
-        }
+    width: 5px;
 
-        .particle:nth-child(5) {
-            left: 45%;
-            animation-duration: 9s;
-            animation-delay: 1s;
-        }
+    height: 16px;
 
-        .particle:nth-child(6) {
-            left: 55%;
-            animation-duration: 13s;
-            animation-delay: 4s;
-        }
+    border-left: 1.5px solid rgba(255,255,255,.65);
 
-        .particle:nth-child(7) {
-            left: 65%;
-            animation-duration: 11s;
-            animation-delay: 2s;
-        }
+    border-radius: 50%;
 
-        .particle:nth-child(8) {
-            left: 75%;
-            animation-duration: 15s;
-            animation-delay: 6s;
-        }
+    animation: cursorSteam 1.5s infinite ease-in-out;
 
-        .particle:nth-child(9) {
-            left: 85%;
-            animation-duration: 10s;
-            animation-delay: 3s;
-        }
+}
 
-        .particle:nth-child(10) {
-            left: 95%;
-            animation-duration: 12s;
-            animation-delay: 5s;
-        }
+.cursor-steam.one {
 
-        @keyframes floatParticle {
+    left: 16px;
+    top: 1px;
 
-            0% {
-                transform: translateY(110vh) scale(0);
-                opacity: 0;
-            }
+}
 
-            15% {
-                opacity: 1;
-            }
+.cursor-steam.two {
 
-            80% {
-                opacity: 0.8;
-            }
+    left: 25px;
+    top: -2px;
 
-            100% {
-                transform: translateY(-10vh) scale(1.5);
-                opacity: 0;
-            }
+    animation-delay: .45s;
 
-        }
+}
 
+@keyframes cursorSteam {
 
-        /* =====================================================
-           CURSOR GLOW
-        ===================================================== */
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
 
-        #cursorGlow {
+    45% {
+        opacity: 1;
+    }
 
-            position: fixed;
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 
-            width: 120px;
-            height: 120px;
+}
 
-            border-radius: 50%;
+.cursor-ring {
 
-            background: radial-gradient(
-                circle,
-                rgba(255, 60, 0, 0.18),
-                transparent 65%
-            );
+    position: fixed;
 
-            pointer-events: none;
+    width: 90px;
+    height: 90px;
 
-            transform: translate(-50%, -50%);
+    border: 1px solid rgba(200,164,107,.18);
 
-            z-index: 9999;
+    border-radius: 50%;
 
-            mix-blend-mode: screen;
-        }
+    pointer-events: none;
 
+    z-index: 9998;
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+    transform: translate(-50%, -50%);
 
-        header {
+    transition:
+        width .3s ease,
+        height .3s ease,
+        border .3s ease;
 
-            position: fixed;
+}
 
-            top: 0;
-            left: 0;
 
-            width: 100%;
+/* =========================================================
+   NAVBAR
+========================================================= */
 
-            height: 78px;
+nav {
 
-            z-index: 1000;
+    position: fixed;
 
-            background: rgba(5, 5, 5, 0.82);
+    top: 22px;
+    left: 50%;
 
-            backdrop-filter: blur(15px);
+    transform: translateX(-50%);
 
-            border-bottom: 1px solid rgba(255, 60, 0, 0.18);
-        }
+    width: min(1160px, 90%);
 
-        nav {
+    padding: 16px 22px;
 
-            max-width: 1200px;
+    display: flex;
 
-            height: 100%;
+    align-items: center;
 
-            margin: auto;
+    justify-content: space-between;
 
-            padding: 0 25px;
+    z-index: 1000;
 
-            display: flex;
+    background: rgba(30,21,15,.55);
 
-            align-items: center;
+    border: 1px solid rgba(255,255,255,.08);
 
-            justify-content: space-between;
-        }
+    backdrop-filter: blur(18px);
 
+    border-radius: 50px;
 
-        /* =====================================================
-           LOGO
-        ===================================================== */
+}
 
-        .logo {
+.logo {
 
-            text-decoration: none;
+    font-family: "Cormorant Garamond", serif;
 
-            color: #ff3c00;
+    font-size: 28px;
 
-            font-size: 25px;
+    letter-spacing: 3px;
 
-            font-weight: 900;
+    font-weight: 600;
 
-            letter-spacing: 2px;
+}
 
-            text-shadow:
-                0 0 10px rgba(255, 60, 0, 0.5);
-        }
+.logo span {
 
-        .logo span {
-            color: white;
-        }
+    color: var(--gold);
 
+}
 
-        /* =====================================================
-           NAV LINKS
-        ===================================================== */
+.nav-links {
 
-        .nav-links {
+    display: flex;
 
-            display: flex;
+    gap: 35px;
 
-            list-style: none;
+    list-style: none;
 
-            gap: 35px;
-        }
+}
 
-        .nav-links a {
+.nav-links a {
 
-            position: relative;
+    font-size: 11px;
 
-            color: #ddd;
+    letter-spacing: 2px;
 
-            text-decoration: none;
+    text-transform: uppercase;
 
-            font-size: 15px;
+    color: #c9beb1;
 
-            font-weight: bold;
+    transition: .3s;
 
-            transition: 0.3s;
-        }
+}
 
-        .nav-links a::after {
+.nav-links a:hover {
 
-            content: "";
+    color: var(--cream);
 
-            position: absolute;
+}
 
-            left: 0;
-            bottom: -8px;
+.nav-btn {
 
-            width: 0;
+    padding: 10px 18px;
 
-            height: 2px;
+    border: 1px solid rgba(200,164,107,.5);
 
-            background: #ff3c00;
+    border-radius: 30px;
 
-            box-shadow: 0 0 10px #ff3c00;
+    font-size: 10px;
 
-            transition: 0.3s;
-        }
+    letter-spacing: 1.5px;
 
-        .nav-links a:hover {
+    text-transform: uppercase;
 
-            color: #ff3c00;
+}
 
-        }
 
-        .nav-links a:hover::after {
+/* =========================================================
+   HERO
+========================================================= */
 
-            width: 100%;
+.hero {
 
-        }
+    min-height: 100vh;
 
+    position: relative;
 
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
+    display: flex;
 
-        .join-btn,
-        .primary-btn {
+    align-items: center;
 
-            display: inline-block;
+    overflow: hidden;
 
-            text-decoration: none;
+    padding: 150px 8% 100px;
 
-            background: #ff3c00;
+    background:
 
-            color: white;
+        linear-gradient(
+            90deg,
+            rgba(18,13,9,.97) 0%,
+            rgba(18,13,9,.82) 38%,
+            rgba(18,13,9,.25) 75%,
+            rgba(18,13,9,.65) 100%
+        ),
 
-            font-weight: bold;
+        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2200&q=90");
 
-            padding: 14px 25px;
+    background-size: cover;
 
-            border-radius: 5px;
+    background-position: center;
 
-            transition: 0.3s;
+}
 
-            box-shadow:
-                0 0 15px rgba(255, 60, 0, 0.25);
-        }
+.hero::after {
 
-        .join-btn:hover,
-        .primary-btn:hover {
+    content: "";
 
-            transform: translateY(-3px);
+    position: absolute;
 
-            background: #ff521b;
+    inset: 0;
 
-            box-shadow:
-                0 0 25px rgba(255, 60, 0, 0.55);
-        }
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 65%,
+            #15110d 100%
+        );
 
+}
 
-        /* =====================================================
-           HERO
-        ===================================================== */
 
-        .hero {
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
-            min-height: 100vh;
+.hero-content {
 
-            display: flex;
+    position: relative;
 
-            align-items: center;
+    z-index: 10;
 
-            position: relative;
+    max-width: 690px;
 
-            overflow: hidden;
+    animation: heroAppear 1.3s cubic-bezier(.16,1,.3,1);
 
-            background:
+}
 
-                linear-gradient(
-                    90deg,
-                    rgba(0, 0, 0, 0.96),
-                    rgba(0, 0, 0, 0.72),
-                    rgba(0, 0, 0, 0.35)
-                ),
+@keyframes heroAppear {
 
-                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90");
+    from {
 
-            background-size: cover;
+        opacity: 0;
 
-            background-position: center;
+        transform: translateY(40px);
 
-        }
+    }
 
+    to {
 
-        /* Orange atmospheric glow */
+        opacity: 1;
 
-        .hero::before {
+        transform: translateY(0);
 
-            content: "";
+    }
 
-            position: absolute;
+}
 
-            width: 600px;
-            height: 600px;
+.eyebrow {
 
-            right: -150px;
-            top: 100px;
+    display: flex;
 
-            background: #ff3c00;
+    align-items: center;
 
-            filter: blur(180px);
+    gap: 14px;
 
-            opacity: 0.12;
+    margin-bottom: 25px;
 
-            border-radius: 50%;
+    color: var(--gold);
 
-            animation: heroGlow 5s ease-in-out infinite alternate;
-        }
+    text-transform: uppercase;
 
-        @keyframes heroGlow {
+    letter-spacing: 4px;
 
-            from {
-                opacity: 0.08;
-                transform: scale(0.9);
-            }
+    font-size: 10px;
 
-            to {
-                opacity: 0.18;
-                transform: scale(1.1);
-            }
+}
 
-        }
+.eyebrow::before {
 
+    content: "";
 
-        .hero-content {
+    width: 35px;
 
-            max-width: 1200px;
+    height: 1px;
 
-            width: 100%;
+    background: var(--gold);
 
-            margin: auto;
+}
 
-            padding: 130px 25px 80px;
+.hero h1 {
 
-            position: relative;
+    font-family: "Cormorant Garamond", serif;
 
-            z-index: 2;
-        }
+    font-size: clamp(75px, 9vw, 140px);
 
+    line-height: .78;
 
-        .hero-small {
+    font-weight: 400;
 
-            color: #ff3c00;
+    letter-spacing: -5px;
 
-            font-weight: bold;
+}
 
-            letter-spacing: 5px;
+.hero h1 em {
 
-            font-size: 14px;
+    color: var(--gold);
 
-            margin-bottom: 20px;
+    font-weight: 400;
 
-        }
+}
 
+.hero-description {
 
-        .hero h1 {
+    margin-top: 38px;
 
-            max-width: 800px;
+    max-width: 460px;
 
-            font-size: clamp(50px, 7vw, 90px);
+    color: #b9afa3;
 
-            line-height: 0.95;
+    line-height: 1.9;
 
-            text-transform: uppercase;
+    font-size: 14px;
 
-            font-weight: 900;
+    font-weight: 300;
 
-            text-shadow:
-                0 5px 30px rgba(0, 0, 0, 0.8);
-        }
+}
 
-        .hero h1 span {
 
-            color: #ff3c00;
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
-            text-shadow:
-                0 0 25px rgba(255, 60, 0, 0.5);
-        }
+.hero-actions {
 
+    display: flex;
 
-        .hero p {
+    align-items: center;
 
-            max-width: 580px;
+    gap: 25px;
 
-            margin-top: 25px;
+    margin-top: 40px;
 
-            color: #c5c5c5;
+}
 
-            font-size: 18px;
+.btn {
 
-            line-height: 1.7;
-        }
+    position: relative;
 
+    padding: 16px 28px;
 
-        .hero-buttons {
+    border-radius: 40px;
 
-            display: flex;
+    font-size: 10px;
 
-            gap: 15px;
+    letter-spacing: 2px;
 
-            margin-top: 35px;
+    text-transform: uppercase;
 
-            flex-wrap: wrap;
-        }
+    transition: .4s;
 
+    overflow: hidden;
 
-        .secondary-btn {
+}
 
-            display: inline-block;
+.btn-main {
 
-            padding: 14px 25px;
+    background: var(--cream);
 
-            text-decoration: none;
+    color: #21150e;
 
-            color: white;
+}
 
-            border: 1px solid white;
+.btn-main:hover {
 
-            border-radius: 5px;
+    transform: translateY(-4px);
 
-            transition: 0.3s;
-        }
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
 
-        .secondary-btn:hover {
+}
 
-            color: #ff3c00;
+.btn-outline {
 
-            border-color: #ff3c00;
+    border: 1px solid rgba(255,255,255,.25);
 
-            box-shadow:
-                0 0 20px rgba(255, 60, 0, 0.3);
-        }
+    color: #ded4c8;
 
+}
 
-        /* =====================================================
-           STATS
-        ===================================================== */
+.btn-outline:hover {
 
-        .stats {
+    border-color: var(--gold);
 
-            background: rgba(10, 10, 10, 0.95);
+    color: var(--gold);
 
-            border-top: 1px solid rgba(255, 60, 0, 0.25);
+}
 
-            border-bottom: 1px solid rgba(255, 60, 0, 0.25);
 
-        }
+/* =========================================================
+   HERO CUP
+========================================================= */
 
-        .stats-container {
+.cup-scene {
 
-            max-width: 1200px;
+    position: absolute;
 
-            margin: auto;
+    right: 8%;
 
-            display: grid;
+    top: 50%;
 
-            grid-template-columns: repeat(4, 1fr);
+    transform: translateY(-50%);
 
-            padding: 30px 25px;
-        }
+    width: 480px;
 
-        .stat {
+    height: 480px;
 
-            text-align: center;
+    z-index: 6;
 
-            border-right: 1px solid #333;
-        }
+}
 
-        .stat:last-child {
-            border-right: none;
-        }
+.cup-shadow {
 
-        .stat h2 {
+    position: absolute;
 
-            font-size: 34px;
+    width: 330px;
 
-            color: #ff3c00;
+    height: 70px;
 
-            text-shadow:
-                0 0 15px rgba(255, 60, 0, 0.4);
-        }
+    background: rgba(0,0,0,.55);
 
-        .stat p {
+    filter: blur(30px);
 
-            margin-top: 5px;
+    bottom: 85px;
 
-            color: #999;
-        }
+    left: 70px;
 
+}
 
-        /* =====================================================
-           INTRO
-        ===================================================== */
+.big-cup {
 
-        .intro {
+    position: absolute;
 
-            max-width: 1200px;
+    width: 270px;
 
-            margin: auto;
+    height: 185px;
 
-            padding: 110px 25px;
+    left: 90px;
 
-            display: grid;
+    top: 150px;
 
-            grid-template-columns: 1fr 1fr;
+    background:
+        linear-gradient(
+            145deg,
+            #eee1ce,
+            #b49a7b
+        );
 
-            gap: 70px;
+    border-radius: 12px 12px 80px 80px;
 
-            align-items: center;
-        }
+    box-shadow:
+        inset -18px -15px 25px rgba(0,0,0,.15),
+        0 35px 70px rgba(0,0,0,.55);
 
+    animation: floatingCup 5s infinite ease-in-out;
 
-        .intro-image {
+}
 
-            height: 500px;
+@keyframes floatingCup {
 
-            border-radius: 10px;
+    0%,100% {
+        transform: translateY(0) rotate(0deg);
+    }
 
-            background:
+    50% {
+        transform: translateY(-15px) rotate(-1deg);
+    }
 
-                linear-gradient(
-                    rgba(0,0,0,0.2),
-                    rgba(0,0,0,0.2)
-                ),
+}
 
-                url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=90");
+.big-coffee {
 
-            background-size: cover;
+    position: absolute;
 
-            background-position: center;
+    width: 230px;
 
-            border: 1px solid rgba(255,60,0,0.3);
+    height: 55px;
 
-            box-shadow:
-                0 0 40px rgba(255,60,0,0.08);
+    left: 20px;
 
-            transition: 0.5s;
-        }
+    top: -22px;
 
-        .intro-image:hover {
+    border-radius: 50%;
 
-            transform: scale(1.02);
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            #9b6140,
+            #4a2414 65%
+        );
 
-            box-shadow:
-                0 0 50px rgba(255,60,0,0.2);
-        }
+    box-shadow:
+        inset 0 5px 8px rgba(255,255,255,.08);
 
+}
 
-        .section-label {
+.cup-highlight {
 
-            color: #ff3c00;
+    position: absolute;
 
-            letter-spacing: 4px;
+    width: 45px;
 
-            font-size: 13px;
+    height: 110px;
 
-            font-weight: bold;
-        }
+    left: 38px;
 
+    top: 25px;
 
-        .intro h2 {
+    border-radius: 50%;
 
-            font-size: 45px;
+    background: rgba(255,255,255,.13);
 
-            line-height: 1.1;
+    filter: blur(4px);
 
-            margin: 15px 0 20px;
-        }
+}
 
-        .intro p {
+.cup-handle {
 
-            color: #999;
+    position: absolute;
 
-            line-height: 1.8;
+    width: 90px;
 
-            margin-bottom: 18px;
-        }
+    height: 100px;
 
+    right: -70px;
 
-        .check-list {
+    top: 30px;
 
-            list-style: none;
+    border: 22px solid #b49a7b;
 
-            margin: 25px 0;
-        }
+    border-left: none;
 
-        .check-list li {
+    border-radius: 0 60px 60px 0;
 
-            margin-bottom: 13px;
+}
 
-            color: #ddd;
-        }
+.big-steam {
 
-        .check-list li::before {
+    position: absolute;
 
-            content: "✓";
+    width: 18px;
 
-            color: #ff3c00;
+    height: 145px;
 
-            font-weight: bold;
+    border-left: 3px solid rgba(255,255,255,.16);
 
-            margin-right: 12px;
-        }
+    border-radius: 50%;
 
+    bottom: 280px;
 
-        /* =====================================================
-           SERVICES
-        ===================================================== */
+    animation: steamRise 3.5s infinite ease-in-out;
 
-        .services {
+}
 
-            padding: 110px 25px;
+.big-steam.s1 {
 
-            background:
+    left: 195px;
 
-                linear-gradient(
-                    rgba(12,12,12,0.95),
-                    rgba(5,5,5,0.98)
-                );
-        }
+}
 
-        .services-container {
+.big-steam.s2 {
 
-            max-width: 1200px;
+    left: 250px;
 
-            margin: auto;
-        }
+    animation-delay: .8s;
 
+}
 
-        .services-heading {
+.big-steam.s3 {
 
-            text-align: center;
+    left: 300px;
 
-            margin-bottom: 50px;
-        }
+    animation-delay: 1.6s;
 
-        .services-heading h2 {
+}
 
-            font-size: 45px;
+@keyframes steamRise {
 
-            margin-top: 12px;
-        }
+    0% {
 
+        opacity: 0;
 
-        .service-grid {
+        transform:
+            translateY(30px)
+            rotate(10deg);
 
-            display: grid;
+    }
 
-            grid-template-columns: repeat(3, 1fr);
+    40% {
 
-            gap: 25px;
-        }
+        opacity: .8;
 
+    }
 
-        .service-card {
+    100% {
 
-            position: relative;
+        opacity: 0;
 
-            overflow: hidden;
+        transform:
+            translateY(-100px)
+            rotate(-10deg);
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #181818,
-                    #0e0e0e
-                );
+    }
 
-            padding: 35px;
+}
 
-            border: 1px solid #292929;
 
-            border-radius: 8px;
+/* =========================================================
+   SIDE LABEL
+========================================================= */
 
-            transition: 0.4s;
-        }
+.hero-label {
 
+    position: absolute;
 
-        .service-card::before {
+    right: 30px;
 
-            content: "";
+    top: 50%;
 
-            position: absolute;
+    transform:
+        translateY(-50%)
+        rotate(90deg);
 
-            width: 100px;
-            height: 100px;
+    color: rgba(238,229,215,.45);
 
-            right: -40px;
-            top: -40px;
+    letter-spacing: 5px;
 
-            background: #ff3c00;
+    font-size: 9px;
 
-            filter: blur(50px);
+    text-transform: uppercase;
 
-            opacity: 0;
+    z-index: 10;
 
-            transition: 0.4s;
-        }
+}
 
 
-        .service-card:hover {
+/* =========================================================
+   INFO STRIP
+========================================================= */
 
-            transform: translateY(-10px);
+.info-strip {
 
-            border-color: #ff3c00;
+    position: relative;
 
-            box-shadow:
-                0 15px 40px rgba(255,60,0,0.15);
-        }
+    z-index: 20;
 
-        .service-card:hover::before {
+    margin-top: -1px;
 
-            opacity: 0.25;
-        }
+    padding: 28px 8%;
 
+    display: flex;
 
-        .service-icon {
+    justify-content: space-between;
 
-            font-size: 42px;
+    align-items: center;
 
-            margin-bottom: 20px;
-        }
+    background: #1c130d;
 
-        .service-card h3 {
+    border-top: 1px solid rgba(255,255,255,.06);
 
-            font-size: 22px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
 
-            margin-bottom: 12px;
-        }
+}
 
-        .service-card p {
+.info-item {
 
-            color: #999;
+    display: flex;
 
-            line-height: 1.7;
-        }
+    align-items: center;
 
+    gap: 15px;
 
-        /* =====================================================
-           CTA
-        ===================================================== */
+}
 
-        .cta {
+.info-number {
 
-            padding: 120px 25px;
+    color: var(--gold);
 
-            text-align: center;
+    font-family: "Cormorant Garamond", serif;
 
-            position: relative;
+    font-size: 27px;
 
-            overflow: hidden;
+}
 
-            background:
+.info-text {
 
-                linear-gradient(
-                    rgba(0,0,0,0.78),
-                    rgba(0,0,0,0.9)
-                ),
+    color: #918578;
 
-                url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=2000&q=90");
+    text-transform: uppercase;
 
-            background-size: cover;
+    font-size: 9px;
 
-            background-position: center;
+    letter-spacing: 2px;
 
-            background-attachment: fixed;
-        }
+}
 
 
-        .cta::before {
+/* =========================================================
+   MENU SECTION
+========================================================= */
 
-            content: "";
+.menu-section {
 
-            position: absolute;
+    padding: 150px 8%;
 
-            width: 400px;
-            height: 400px;
+    background: #15110d;
 
-            background: #ff3c00;
+}
 
-            filter: blur(180px);
+.section-heading {
 
-            opacity: 0.13;
+    display: flex;
 
-            left: 50%;
+    justify-content: space-between;
 
-            top: 50%;
+    align-items: flex-end;
 
-            transform: translate(-50%, -50%);
-        }
+    margin-bottom: 70px;
 
+}
 
-        .cta h2 {
+.section-kicker {
 
-            position: relative;
+    color: var(--gold);
 
-            font-size: clamp(35px, 5vw, 55px);
+    text-transform: uppercase;
 
-            text-transform: uppercase;
+    letter-spacing: 4px;
 
-            margin-bottom: 15px;
-        }
+    font-size: 10px;
 
+    margin-bottom: 12px;
 
-        .cta p {
+}
 
-            position: relative;
+.section-heading h2 {
 
-            color: #ccc;
+    font-family: "Cormorant Garamond", serif;
 
-            font-size: 18px;
+    font-size: clamp(55px, 7vw, 95px);
 
-            margin-bottom: 30px;
-        }
+    font-weight: 400;
 
+    line-height: .8;
 
-        /* =====================================================
-           FOOTER
-        ===================================================== */
+    letter-spacing: -3px;
 
-        footer {
+}
 
-            background: #050505;
+.section-note {
 
-            padding: 60px 25px 25px;
+    max-width: 280px;
 
-            border-top: 1px solid #222;
-        }
+    color: #887b70;
 
-        .footer-container {
+    font-size: 12px;
 
-            max-width: 1200px;
+    line-height: 1.8;
 
-            margin: auto;
+}
 
-            display: grid;
 
-            grid-template-columns: 2fr 1fr 1fr;
+/* =========================================================
+   MENU CARDS
+========================================================= */
 
-            gap: 50px;
-        }
+.menu-grid {
 
+    display: grid;
 
-        .footer-logo {
+    grid-template-columns:
+        1fr 1fr 1fr;
 
-            color: #ff3c00;
+    gap: 20px;
 
-            font-size: 25px;
+}
 
-            font-weight: 900;
-        }
+.menu-card {
 
-        .footer-about p {
+    position: relative;
 
-            max-width: 400px;
+    min-height: 410px;
 
-            color: #777;
+    overflow: hidden;
 
-            line-height: 1.7;
+    border-radius: 4px;
 
-            margin-top: 15px;
-        }
+    background: #21160f;
 
+    transition:
+        transform .5s cubic-bezier(.16,1,.3,1);
 
-        footer h3 {
+}
 
-            margin-bottom: 20px;
-        }
+.menu-card:hover {
 
+    transform: translateY(-12px);
 
-        footer ul {
+}
 
-            list-style: none;
-        }
+.menu-card img {
 
-        footer li {
+    width: 100%;
 
-            margin-bottom: 12px;
-        }
+    height: 100%;
 
-        footer a {
+    object-fit: cover;
 
-            color: #888;
+    position: absolute;
 
-            text-decoration: none;
+    inset: 0;
 
-            transition: 0.3s;
-        }
+    transition: transform .8s ease;
 
-        footer a:hover {
+}
 
-            color: #ff3c00;
-        }
+.menu-card:hover img {
 
+    transform: scale(1.07);
 
-        .copyright {
+}
 
-            max-width: 1200px;
+.menu-card::after {
 
-            margin: 50px auto 0;
+    content: "";
 
-            padding-top: 20px;
+    position: absolute;
 
-            border-top: 1px solid #222;
+    inset: 0;
 
-            text-align: center;
+    background:
+        linear-gradient(
+            to top,
+            rgba(15,9,5,.95),
+            rgba(15,9,5,.05) 70%
+        );
 
-            color: #555;
+}
 
-            font-size: 14px;
-        }
+.card-content {
 
+    position: absolute;
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
+    bottom: 30px;
 
-        @media (max-width: 850px) {
+    left: 30px;
 
-            .nav-links {
-                gap: 15px;
-            }
+    right: 30px;
 
-            .join-btn {
-                display: none;
-            }
+    z-index: 2;
 
-            .stats-container {
+}
 
-                grid-template-columns: repeat(2, 1fr);
+.card-tag {
 
-                gap: 25px;
-            }
+    color: var(--gold);
 
-            .stat {
-                border-right: none;
-            }
+    font-size: 9px;
 
-            .intro {
+    text-transform: uppercase;
 
-                grid-template-columns: 1fr;
-            }
+    letter-spacing: 2px;
 
-            .service-grid {
+}
 
-                grid-template-columns: 1fr;
-            }
+.card-content h3 {
 
-            .footer-container {
+    margin-top: 8px;
 
-                grid-template-columns: 1fr;
-            }
-        }
+    font-family: "Cormorant Garamond", serif;
 
+    font-size: 37px;
 
-        @media (max-width: 600px) {
+    font-weight: 400;
 
-            nav {
-                padding: 0 15px;
-            }
+}
 
-            .logo {
-                font-size: 19px;
-            }
+.card-price {
 
-            .nav-links {
-                gap: 10px;
-            }
+    position: absolute;
 
-            .nav-links a {
-                font-size: 11px;
-            }
+    right: 0;
 
-            .hero h1 {
-                font-size: 50px;
-            }
+    bottom: 3px;
 
-            .hero p {
-                font-size: 16px;
-            }
+    color: #ddd0c1;
 
-            .intro h2,
-            .services-heading h2 {
-                font-size: 35px;
-            }
+    font-size: 13px;
 
-            .cta h2 {
-                font-size: 38px;
-            }
-        }
+}
 
-    </style>
 
+/* =========================================================
+   STORY SECTION
+========================================================= */
+
+.story {
+
+    min-height: 75vh;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    padding: 120px 8%;
+
+    background: #1d140e;
+
+}
+
+.story-image {
+
+    height: 550px;
+
+    overflow: hidden;
+
+}
+
+.story-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+.story-content {
+
+    padding: 70px;
+
+}
+
+.story-content h2 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 75px;
+
+    line-height: .85;
+
+    font-weight: 400;
+
+}
+
+.story-content h2 span {
+
+    color: var(--gold);
+
+    font-style: italic;
+
+}
+
+.story-content p {
+
+    margin-top: 35px;
+
+    color: #a99b8d;
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    max-width: 430px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 90px 8% 40px;
+
+    background: #0e0a07;
+
+    text-align: center;
+
+}
+
+.footer-logo {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 65px;
+
+    letter-spacing: 5px;
+
+}
+
+.footer-logo span {
+
+    color: var(--gold);
+
+}
+
+.footer-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 25px auto;
+
+}
+
+footer p {
+
+    color: #76695e;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   COFFEE PARTICLES
+========================================================= */
+
+.bean {
+
+    position: fixed;
+
+    width: 8px;
+
+    height: 5px;
+
+    background: #7a492c;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9996;
+
+    opacity: .45;
+
+    animation: beanFade 1.2s forwards;
+
+}
+
+@keyframes beanFade {
+
+    0% {
+
+        transform: scale(1) rotate(0deg);
+
+        opacity: .5;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-20px)
+            rotate(90deg)
+            scale(.2);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   CLICK RIPPLE
+========================================================= */
+
+.ripple {
+
+    position: fixed;
+
+    width: 10px;
+    height: 10px;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9997;
+
+    transform: translate(-50%,-50%);
+
+    animation: rippleEffect .8s ease-out forwards;
+
+}
+
+@keyframes rippleEffect {
+
+    to {
+
+        width: 100px;
+        height: 100px;
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 1000px) {
+
+    .cup-scene {
+
+        right: -100px;
+
+        opacity: .35;
+
+    }
+
+    .menu-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+    .story {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .story-content {
+
+        padding: 60px 0;
+
+    }
+
+}
+
+@media(max-width: 700px) {
+
+    * {
+        cursor: auto;
+    }
+
+    .cursor,
+    .cursor-ring {
+
+        display: none;
+
+    }
+
+    nav {
+
+        width: 94%;
+
+    }
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .hero {
+
+        padding: 150px 7% 100px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 75px;
+
+        letter-spacing: -3px;
+
+    }
+
+    .cup-scene {
+
+        right: -190px;
+
+        opacity: .2;
+
+    }
+
+    .hero-label {
+
+        display: none;
+
+    }
+
+    .info-strip {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 25px;
+
+    }
+
+    .section-heading {
+
+        display: block;
+
+    }
+
+    .section-note {
+
+        margin-top: 30px;
+
+    }
+
+    .menu-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .story-image {
+
+        height: 400px;
+
+    }
+
+    .story-content h2 {
+
+        font-size: 60px;
+
+    }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         PARTICLES
-    ===================================================== -->
+<!-- =========================================================
+     CUSTOM CURSOR
+========================================================= -->
 
-    <div class="particles">
+<div class="cursor">
 
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <div class="cursor-steam one"></div>
+    <div class="cursor-steam two"></div>
+
+    <div class="cursor-cup">
+
+        <div class="cursor-coffee"></div>
+
+        <div class="cursor-handle"></div>
+
+    </div>
+
+</div>
+
+<div class="cursor-ring"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav>
+
+    <a href="#" class="logo">
+        NOIR<span>É</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#">Home</a>
+        </li>
+
+        <li>
+            <a href="#menu">Menu</a>
+        </li>
+
+        <li>
+            <a href="#story">Our Story</a>
+        </li>
+
+    </ul>
+
+    <a href="#visit" class="nav-btn">
+        Find Us
+    </a>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Specialty Coffee · Since 2012
+        </div>
+
+        <h1>
+            Coffee<br>
+            with <em>character.</em>
+        </h1>
+
+        <p class="hero-description">
+
+            A quiet corner for exceptional coffee,
+            slow mornings and conversations that
+            deserve a little more time.
+
+        </p>
+
+        <div class="hero-actions">
+
+            <a href="#menu" class="btn btn-main">
+                Explore Menu
+            </a>
+
+            <a href="#story" class="btn btn-outline">
+                Discover Noiré
+            </a>
+
+        </div>
 
     </div>
 
 
-    <!-- CURSOR GLOW -->
+    <!-- FLOATING CUP -->
 
-    <div id="cursorGlow"></div>
+    <div class="cup-scene">
 
+        <div class="cup-shadow"></div>
 
-    <!-- =====================================================
-         HEADER
-    ===================================================== -->
+        <div class="big-steam s1"></div>
+        <div class="big-steam s2"></div>
+        <div class="big-steam s3"></div>
 
-    <header>
+        <div class="big-cup">
 
-        <nav>
+            <div class="big-coffee"></div>
 
-            <a href="index.html" class="logo">
-                IRON<span>CORE</span>
-            </a>
+            <div class="cup-highlight"></div>
 
+            <div class="cup-handle"></div>
 
-            <ul class="nav-links">
+        </div>
 
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-
-                <li>
-                    <a href="services.html">Services</a>
-                </li>
-
-                <li>
-                    <a href="subscription.html">Subscription</a>
-                </li>
-
-            </ul>
+    </div>
 
 
-            <a href="subscription.html" class="join-btn">
-                JOIN NOW
-            </a>
+    <div class="hero-label">
+        Roasted · Crafted · Served
+    </div>
 
-        </nav>
-
-    </header>
+</section>
 
 
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
+<!-- =========================================================
+     INFO STRIP
+========================================================= -->
 
-    <main>
+<section class="info-strip">
 
-        <section class="hero">
+    <div class="info-item">
 
-            <div class="hero-content">
+        <div class="info-number">
+            100%
+        </div>
 
-                <div class="hero-small">
-                    PREMIUM FITNESS CENTER
-                </div>
+        <div class="info-text">
+            Arabica Beans
+        </div>
 
-
-                <h1>
-
-                    BUILD YOUR
-
-                    <span>
-                        STRONGER
-                    </span>
-
-                    SELF.
-
-                </h1>
+    </div>
 
 
-                <p>
+    <div class="info-item">
 
-                    Train harder. Get stronger. Become the best
-                    version of yourself with expert trainers,
-                    premium equipment and a community that keeps
-                    you motivated.
+        <div class="info-number">
+            12
+        </div>
 
-                </p>
+        <div class="info-text">
+            Years of Craft
+        </div>
 
-
-                <div class="hero-buttons">
-
-                    <a
-                        href="subscription.html"
-                        class="primary-btn">
-
-                        START YOUR JOURNEY
-
-                    </a>
+    </div>
 
 
-                    <a
-                        href="services.html"
-                        class="secondary-btn">
+    <div class="info-item">
 
-                        EXPLORE SERVICES
+        <div class="info-number">
+            18h
+        </div>
 
-                    </a>
+        <div class="info-text">
+            Cold Brew
+        </div>
 
-                </div>
+    </div>
 
+
+    <div class="info-item">
+
+        <div class="info-number">
+            4.9
+        </div>
+
+        <div class="info-text">
+            Guest Rating
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MENU
+========================================================= -->
+
+<section class="menu-section" id="menu">
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-kicker">
+                Our Menu
             </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             STATS
-        ===================================================== -->
-
-        <section class="stats">
-
-            <div class="stats-container">
-
-
-                <div class="stat">
-
-                    <h2>
-                        10+
-                    </h2>
-
-                    <p>
-                        Years Experience
-                    </p>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <h2>
-                        5K+
-                    </h2>
-
-                    <p>
-                        Members
-                    </p>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <h2>
-                        20+
-                    </h2>
-
-                    <p>
-                        Expert Trainers
-                    </p>
-
-                </div>
-
-
-                <div class="stat">
-
-                    <h2>
-                        50+
-                    </h2>
-
-                    <p>
-                        Equipment
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             ABOUT PREVIEW
-        ===================================================== -->
-
-        <section class="intro">
-
-
-            <div class="intro-image"></div>
-
-
-            <div>
-
-                <div class="section-label">
-                    WHY IRONCORE?
-                </div>
-
-
-                <h2>
-
-                    MORE THAN A GYM.
-                    <br>
-
-                    IT'S A
-                    <span style="color:#ff3c00;">
-                        LIFESTYLE.
-                    </span>
-
-                </h2>
-
-
-                <p>
-
-                    IRONCORE FITNESS is designed for people who
-                    are serious about their health, strength and
-                    personal transformation.
-
-                </p>
-
-
-                <p>
-
-                    Whether you're just starting your fitness
-                    journey or you're an experienced athlete,
-                    we have the environment and support you need.
-
-                </p>
-
-
-                <ul class="check-list">
-
-                    <li>
-                        Premium workout equipment
-                    </li>
-
-                    <li>
-                        Certified professional trainers
-                    </li>
-
-                    <li>
-                        Personalized workout programs
-                    </li>
-
-                    <li>
-                        Clean and motivating environment
-                    </li>
-
-                    <li>
-                        Flexible membership plans
-                    </li>
-
-                </ul>
-
-
-                <a
-                    href="about.html"
-                    class="primary-btn">
-
-                    KNOW MORE
-
-                </a>
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =====================================================
-             SERVICES
-        ===================================================== -->
-
-        <section class="services">
-
-
-            <div class="services-container">
-
-
-                <div class="services-heading">
-
-                    <div class="section-label">
-                        WHAT WE OFFER
-                    </div>
-
-                    <h2>
-                        OUR
-                        <span style="color:#ff3c00;">
-                            SERVICES
-                        </span>
-                    </h2>
-
-                </div>
-
-
-                <div class="service-grid">
-
-
-                    <div class="service-card">
-
-                        <div class="service-icon">
-                            🏋️
-                        </div>
-
-                        <h3>
-                            Strength Training
-                        </h3>
-
-                        <p>
-
-                            Build muscle, improve strength and
-                            develop powerful training habits with
-                            professional equipment.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="service-card">
-
-                        <div class="service-icon">
-                            🔥
-                        </div>
-
-                        <h3>
-                            Personal Training
-                        </h3>
-
-                        <p>
-
-                            Get personalized guidance from our
-                            experienced trainers and follow a
-                            structured fitness program.
-
-                        </p>
-
-                    </div>
-
-
-                    <div class="service-card">
-
-                        <div class="service-icon">
-                            ⚡
-                        </div>
-
-                        <h3>
-                            Cardio & Fitness
-                        </h3>
-
-                        <p>
-
-                            Improve stamina, endurance and overall
-                            fitness with dedicated cardio and
-                            functional training zones.
-
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-                <div style="
-                    text-align:center;
-                    margin-top:40px;
-                ">
-
-                    <a
-                        href="services.html"
-                        class="primary-btn">
-
-                        VIEW ALL SERVICES
-
-                    </a>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             CTA
-        ===================================================== -->
-
-        <section class="cta">
-
 
             <h2>
-
-                YOUR TRANSFORMATION
-                <br>
-
-                STARTS
-                <span style="color:#ff3c00;">
-                    TODAY.
-                </span>
-
+                The Daily<br>
+                Ritual.
             </h2>
 
+        </div>
 
-            <p>
+        <p class="section-note">
 
-                Stop waiting for the perfect time.
-                Start building the stronger version of yourself.
+            Carefully sourced beans.
+            Thoughtfully roasted.
+            Beautifully brewed.
 
-            </p>
+        </p>
 
-
-            <a
-                href="subscription.html"
-                class="primary-btn">
-
-                VIEW MEMBERSHIP PLANS
-
-            </a>
+    </div>
 
 
-        </section>
+    <div class="menu-grid">
 
 
-    </main>
+        <!-- CARD 1 -->
 
+        <article class="menu-card">
 
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
+            <img
+                src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1000&q=85"
+                alt="Espresso"
+            >
 
-    <footer>
+            <div class="card-content">
 
-
-        <div class="footer-container">
-
-
-            <div class="footer-about">
-
-                <div class="footer-logo">
-                    IRONCORE FITNESS
+                <div class="card-tag">
+                    Classic
                 </div>
 
-                <p>
-
-                    A modern fitness center dedicated to helping
-                    you build strength, confidence and a healthier
-                    lifestyle.
-
-                </p>
-
-            </div>
-
-
-            <div>
-
                 <h3>
-                    Quick Links
+                    Espresso
                 </h3>
 
-                <ul>
-
-                    <li>
-                        <a href="index.html">
-                            Home
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about.html">
-                            About
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="services.html">
-                            Services
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="subscription.html">
-                            Subscription
-                        </a>
-                    </li>
-
-                </ul>
+                <div class="card-price">
+                    ₹160
+                </div>
 
             </div>
 
+        </article>
 
-            <div>
+
+        <!-- CARD 2 -->
+
+        <article class="menu-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=1000&q=85"
+                alt="Cappuccino"
+            >
+
+            <div class="card-content">
+
+                <div class="card-tag">
+                    Signature
+                </div>
 
                 <h3>
-                    Membership
+                    Cappuccino
                 </h3>
 
-                <ul>
-
-                    <li>
-                        <a href="subscription.html">
-                            Membership Plans
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="subscription.html">
-                            Join Now
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="payment.html">
-                            Payment
-                        </a>
-                    </li>
-
-                </ul>
+                <div class="card-price">
+                    ₹220
+                </div>
 
             </div>
 
+        </article>
 
+
+        <!-- CARD 3 -->
+
+        <article class="menu-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=1000&q=85"
+                alt="Cold Brew"
+            >
+
+            <div class="card-content">
+
+                <div class="card-tag">
+                    Slow Brewed
+                </div>
+
+                <h3>
+                    Cold Brew
+                </h3>
+
+                <div class="card-price">
+                    ₹240
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STORY
+========================================================= -->
+
+<section class="story" id="story">
+
+    <div class="story-image">
+
+        <img
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=85"
+            alt="Noiré Cafe"
+        >
+
+    </div>
+
+
+    <div class="story-content">
+
+        <div class="section-kicker">
+            Our Story
         </div>
 
+        <h2>
 
-        <div class="copyright">
+            Made slowly.<br>
 
-            © 2026 IRONCORE FITNESS.
-            All Rights Reserved.
+            <span>Enjoyed fully.</span>
 
-        </div>
+        </h2>
 
+        <p>
 
-    </footer>
+            Noiré began with a simple idea —
+            coffee should never feel rushed.
 
+            Every bean is carefully selected,
+            every cup is brewed with intention,
+            and every detail of our space is
+            designed to make you stay a little longer.
 
-    <!-- =====================================================
-         CURSOR JAVASCRIPT
-    ===================================================== -->
+        </p>
 
-    <script>
+    </div>
 
-        const cursorGlow =
-            document.getElementById("cursorGlow");
-
-        document.addEventListener("mousemove", function(e) {
-
-            cursorGlow.style.left = e.clientX + "px";
-
-            cursorGlow.style.top = e.clientY + "px";
-
-        });
+</section>
 
 
-        /*
-            Small orange particles appear where
-            the dumbbell cursor moves.
-        */
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
-        document.addEventListener("mousemove", function(e) {
+<footer id="visit">
 
-            const particle =
-                document.createElement("span");
+    <div class="footer-logo">
+        NOIR<span>É</span>
+    </div>
 
-            particle.style.position = "fixed";
+    <div class="footer-line"></div>
 
-            particle.style.left =
-                e.clientX + "px";
+    <p>
+        Specialty Coffee · Good Conversations · Slow Moments
+    </p>
 
-            particle.style.top =
-                e.clientY + "px";
+    <br>
 
-            particle.style.width = "4px";
+    <p>
+        © 2026 Noiré Coffee & Co.
+    </p>
 
-            particle.style.height = "4px";
-
-            particle.style.background =
-                "#ff3c00";
-
-            particle.style.borderRadius =
-                "50%";
-
-            particle.style.pointerEvents =
-                "none";
-
-            particle.style.zIndex =
-                "9998";
-
-            particle.style.boxShadow =
-                "0 0 10px #ff3c00";
-
-            document.body.appendChild(particle);
+</footer>
 
 
-            particle.animate(
+<script>
 
-                [
-                    {
-                        transform:
-                            "translate(0,0) scale(1)",
+/* =========================================================
+   CUSTOM COFFEE CURSOR
+========================================================= */
 
-                        opacity: 1
-                    },
+const cursor = document.querySelector(".cursor");
+const ring = document.querySelector(".cursor-ring");
 
-                    {
-                        transform:
-                            "translate(" +
-                            (Math.random() * 30 - 15) +
-                            "px," +
-                            (Math.random() * 30 - 15) +
-                            "px) scale(0)",
+let mouseX = 0;
+let mouseY = 0;
 
-                        opacity: 0
-                    }
-                ],
+let cursorX = 0;
+let cursorY = 0;
 
-                {
-                    duration: 500,
+document.addEventListener("mousemove", (event) => {
 
-                    easing: "ease-out"
-                }
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
-            );
+});
 
 
-            setTimeout(() => {
+function animateCursor() {
 
-                particle.remove();
+    cursorX +=
+        (mouseX - cursorX) * .18;
 
-            }, 500);
-
-        });
-
-    </script>
+    cursorY +=
+        (mouseY - cursorY) * .18;
 
 
-</body>
+    cursor.style.left =
+        cursorX + "px";
 
-</html>
+    cursor.style.top =
+        cursorY + "px";
+
+
+    ring.style.left =
+        mouseX + "px";
+
+    ring.style.top =
+        mouseY + "px";
+
+
+    requestAnimationFrame(
+        animateCursor
+    );
+
+}
+
+animateCursor();
+
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+const interactiveElements =
+    document.querySelectorAll(
+        "a, .menu-card"
+    );
+
+interactiveElements.forEach(element => {
+
+    element.addEventListener(
+        "mouseenter",
+        () => {
+
+            ring.style.width = "120px";
+
+            ring.style.height = "120px";
+
+            ring.style.borderColor =
+                "rgba(200,164,107,.5)";
+
+            cursor.style.transform =
+                "translate(-50%,-50%) scale(1.2) rotate(-8deg)";
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        () => {
+
+            ring.style.width = "90px";
+
+            ring.style.height = "90px";
+
+            ring.style.borderColor =
+                "rgba(200,164,107,.18)";
+
+            cursor.style.transform =
+                "translate(-50%
+```
