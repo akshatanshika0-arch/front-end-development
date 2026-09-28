@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IRONCORE FITNESS | Build Your Stronger Self</title>
+
+    <style>
+
+        /* =====================================================
+           BASIC RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: white;
+
+            /* CUSTOM DUMBBELL CURSOR */
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg transform='rotate(-25 20 20)' fill='%23ff3c00' stroke='white' stroke-width='1.5'%3E%3Crect x='5' y='12' width='5' height='16' rx='1'/%3E%3Crect x='30' y='12' width='5' height='16' rx='1'/%3E%3Crect x='10' y='16' width='20' height='8' rx='2'/%3E%3Crect x='2' y='9' width='4' height='22' rx='1'/%3E%3Crect x='34' y='9' width='4' height='22' rx='1'/%3E%3C/g%3E%3C/svg%3E") 20 20, auto;
+        }
+
+
+        /* =====================================================
+           BACKGROUND EFFECT SYSTEM
+        ===================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -5;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 60, 0, 0.14),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 40%,
+                    rgba(255, 60, 0, 0.10),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 50% 90%,
+                    rgba(255, 60, 0, 0.08),
+                    transparent 35%
+                );
+
+            animation: backgroundGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundGlow {
+
+            from {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* Moving grid */
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -4;
+
+            opacity: 0.12;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255, 60, 0, 0.15) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255, 60, 0, 0.15) 1px,
+                    transparent 1px
+                );
+
+            background-size: 80px 80px;
+
+            animation: gridMove 15s linear infinite;
+        }
+
+        @keyframes gridMove {
+
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 80px 80px;
+            }
+
+        }
+
+
+        /* =====================================================
+           PARTICLES
+        ===================================================== */
+
+        .particles {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: -2;
+        }
+
+        .particle {
+
+            position: absolute;
+
+            width: 4px;
+            height: 4px;
+
+            background: #ff3c00;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 8px #ff3c00,
+                0 0 20px rgba(255, 60, 0, 0.7);
+
+            animation: floatParticle linear infinite;
+
+            opacity: 0;
+        }
+
+        .particle:nth-child(1) {
+            left: 5%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(2) {
+            left: 15%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            left: 25%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            left: 35%;
+            animation-duration: 14s;
+            animation-delay: 5s;
+        }
+
+        .particle:nth-child(5) {
+            left: 45%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(6) {
+            left: 55%;
+            animation-duration: 13s;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(7) {
+            left: 65%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(8) {
+            left: 75%;
+            animation-duration: 15s;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(9) {
+            left: 85%;
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(10) {
+            left: 95%;
+            animation-duration: 12s;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatParticle {
+
+            0% {
+                transform: translateY(110vh) scale(0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =====================================================
+           CURSOR GLOW
+        ===================================================== */
+
+        #cursorGlow {
+
+            position: fixed;
+
+            width: 120px;
+            height: 120px;
+
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                rgba(255, 60, 0, 0.18),
+                transparent 65%
+            );
+
+            pointer-events: none;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 9999;
+
+            mix-blend-mode: screen;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 78px;
+
+            z-index: 1000;
+
+            background: rgba(5, 5, 5, 0.82);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 60, 0, 0.18);
+        }
+
+        nav {
+
+            max-width: 1200px;
+
+            height: 100%;
+
+            margin: auto;
+
+            padding: 0 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+
+            text-decoration: none;
+
+            color: #ff3c00;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-shadow:
+                0 0 10px rgba(255, 60, 0, 0.5);
+        }
+
+        .logo span {
+            color: white;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 35px;
+        }
+
+        .nav-links a {
+
+            position: relative;
+
+            color: #ddd;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #ff3c00;
+
+            box-shadow: 0 0 10px #ff3c00;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+
+            color: #ff3c00;
+
+        }
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .join-btn,
+        .primary-btn {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #ff3c00;
+
+            color: white;
+
+            font-weight: bold;
+
+            padding: 14px 25px;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 0 15px rgba(255, 60, 0, 0.25);
+        }
+
+        .join-btn:hover,
+        .primary-btn:hover {
+
+            transform: translateY(-3px);
+
+            background: #ff521b;
+
+            box-shadow:
+                0 0 25px rgba(255, 60, 0, 0.55);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.96),
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.35)
+                ),
+
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+        }
+
+
+        /* Orange atmospheric glow */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+            height: 600px;
+
+            right: -150px;
+            top: 100px;
+
+            background: #ff3c00;
+
+            filter: blur(180px);
+
+            opacity: 0.12;
+
+            border-radius: 50%;
+
+            animation: heroGlow 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+
+            from {
+                opacity: 0.08;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 0.18;
+                transform: scale(1.1);
+            }
+
+        }
+
+
+        .hero-content {
+
+            max-width: 1200px;
+
+            width: 100%;
+
+            margin: auto;
+
+            padding: 130px 25px 80px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .hero-small {
+
+            color: #ff3c00;
+
+            font-weight: bold;
+
+            letter-spacing: 5px;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero h1 {
+
+            max-width: 800px;
+
+            font-size: clamp(50px, 7vw, 90px);
+
+            line-height: 0.95;
+
+            text-transform: uppercase;
+
+            font-weight: 900;
+
+            text-shadow:
+                0 5px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h1 span {
+
+            color: #ff3c00;
+
+            text-shadow:
+                0 0 25px rgba(255, 60, 0, 0.5);
+        }
+
+
+        .hero p {
+
+            max-width: 580px;
+
+            margin-top: 25px;
+
+            color: #c5c5c5;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+        }
+
+
+        .hero-buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 35px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .secondary-btn {
+
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            text-decoration: none;
+
+            color: white;
+
+            border: 1px solid white;
+
+            border-radius: 5px;
+
+            transition: 0.3s;
+        }
+
+        .secondary-btn:hover {
+
+            color: #ff3c00;
+
+            border-color: #ff3c00;
+
+            box-shadow:
+                0 0 20px rgba(255, 60, 0, 0.3);
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+
+            background: rgba(10, 10, 10, 0.95);
+
+            border-top: 1px solid rgba(255, 60, 0, 0.25);
+
+            border-bottom: 1px solid rgba(255, 60, 0, 0.25);
+
+        }
+
+        .stats-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            padding: 30px 25px;
+        }
+
+        .stat {
+
+            text-align: center;
+
+            border-right: 1px solid #333;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat h2 {
+
+            font-size: 34px;
+
+            color: #ff3c00;
+
+            text-shadow:
+                0 0 15px rgba(255, 60, 0, 0.4);
+        }
+
+        .stat p {
+
+            margin-top: 5px;
+
+            color: #999;
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .intro {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 110px 25px;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        .intro-image {
+
+            height: 500px;
+
+            border-radius: 10px;
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,0.2),
+                    rgba(0,0,0,0.2)
+                ),
+
+                url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1000&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+            border: 1px solid rgba(255,60,0,0.3);
+
+            box-shadow:
+                0 0 40px rgba(255,60,0,0.08);
+
+            transition: 0.5s;
+        }
+
+        .intro-image:hover {
+
+            transform: scale(1.02);
+
+            box-shadow:
+                0 0 50px rgba(255,60,0,0.2);
+        }
+
+
+        .section-label {
+
+            color: #ff3c00;
+
+            letter-spacing: 4px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .intro h2 {
+
+            font-size: 45px;
+
+            line-height: 1.1;
+
+            margin: 15px 0 20px;
+        }
+
+        .intro p {
+
+            color: #999;
+
+            line-height: 1.8;
+
+            margin-bottom: 18px;
+        }
+
+
+        .check-list {
+
+            list-style: none;
+
+            margin: 25px 0;
+        }
+
+        .check-list li {
+
+            margin-bottom: 13px;
+
+            color: #ddd;
+        }
+
+        .check-list li::before {
+
+            content: "✓";
+
+            color: #ff3c00;
+
+            font-weight: bold;
+
+            margin-right: 12px;
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .services {
+
+            padding: 110px 25px;
+
+            background:
+
+                linear-gradient(
+                    rgba(12,12,12,0.95),
+                    rgba(5,5,5,0.98)
+                );
+        }
+
+        .services-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+
+        .services-heading {
+
+            text-align: center;
+
+            margin-bottom: 50px;
+        }
+
+        .services-heading h2 {
+
+            font-size: 45px;
+
+            margin-top: 12px;
+        }
+
+
+        .service-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .service-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181818,
+                    #0e0e0e
+                );
+
+            padding: 35px;
+
+            border: 1px solid #292929;
+
+            border-radius: 8px;
+
+            transition: 0.4s;
+        }
+
+
+        .service-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -40px;
+            top: -40px;
+
+            background: #ff3c00;
+
+            filter: blur(50px);
+
+            opacity: 0;
+
+            transition: 0.4s;
+        }
+
+
+        .service-card:hover {
+
+            transform: translateY(-10px);
+
+            border-color: #ff3c00;
+
+            box-shadow:
+                0 15px 40px rgba(255,60,0,0.15);
+        }
+
+        .service-card:hover::before {
+
+            opacity: 0.25;
+        }
+
+
+        .service-icon {
+
+            font-size: 42px;
+
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+
+            color: #999;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+
+            padding: 120px 25px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,0.78),
+                    rgba(0,0,0,0.9)
+                ),
+
+                url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+        }
+
+
+        .cta::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            background: #ff3c00;
+
+            filter: blur(180px);
+
+            opacity: 0.13;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+        }
+
+
+        .cta h2 {
+
+            position: relative;
+
+            font-size: clamp(35px, 5vw, 55px);
+
+            text-transform: uppercase;
+
+            margin-bottom: 15px;
+        }
+
+
+        .cta p {
+
+            position: relative;
+
+            color: #ccc;
+
+            font-size: 18px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #050505;
+
+            padding: 60px 25px 25px;
+
+            border-top: 1px solid #222;
+        }
+
+        .footer-container {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 2fr 1fr 1fr;
+
+            gap: 50px;
+        }
+
+
+        .footer-logo {
+
+            color: #ff3c00;
+
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+        .footer-about p {
+
+            max-width: 400px;
+
+            color: #777;
+
+            line-height: 1.7;
+
+            margin-top: 15px;
+        }
+
+
+        footer h3 {
+
+            margin-bottom: 20px;
+        }
+
+
+        footer ul {
+
+            list-style: none;
+        }
+
+        footer li {
+
+            margin-bottom: 12px;
+        }
+
+        footer a {
+
+            color: #888;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+
+            color: #ff3c00;
+        }
+
+
+        .copyright {
+
+            max-width: 1200px;
+
+            margin: 50px auto 0;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #222;
+
+            text-align: center;
+
+            color: #555;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .join-btn {
+                display: none;
+            }
+
+            .stats-container {
+
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 25px;
+            }
+
+            .stat {
+                border-right: none;
+            }
+
+            .intro {
+
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 19px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .intro h2,
+            .services-heading h2 {
+                font-size: 35px;
+            }
+
+            .cta h2 {
+                font-size: 38px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PARTICLES
+    ===================================================== -->
+
+    <div class="particles">
+
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+    </div>
+
+
+    <!-- CURSOR GLOW -->
+
+    <div id="cursorGlow"></div>
+
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header>
+
+        <nav>
+
+            <a href="index.html" class="logo">
+                IRON<span>CORE</span>
+            </a>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="services.html">Services</a>
+                </li>
+
+                <li>
+                    <a href="subscription.html">Subscription</a>
+                </li>
+
+            </ul>
+
+
+            <a href="subscription.html" class="join-btn">
+                JOIN NOW
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-small">
+                    PREMIUM FITNESS CENTER
+                </div>
+
+
+                <h1>
+
+                    BUILD YOUR
+
+                    <span>
+                        STRONGER
+                    </span>
+
+                    SELF.
+
+                </h1>
+
+
+                <p>
+
+                    Train harder. Get stronger. Become the best
+                    version of yourself with expert trainers,
+                    premium equipment and a community that keeps
+                    you motivated.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="subscription.html"
+                        class="primary-btn">
+
+                        START YOUR JOURNEY
+
+                    </a>
+
+
+                    <a
+                        href="services.html"
+                        class="secondary-btn">
+
+                        EXPLORE SERVICES
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STATS
+        ===================================================== -->
+
+        <section class="stats">
+
+            <div class="stats-container">
+
+
+                <div class="stat">
+
+                    <h2>
+                        10+
+                    </h2>
+
+                    <p>
+                        Years Experience
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h2>
+                        5K+
+                    </h2>
+
+                    <p>
+                        Members
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h2>
+                        20+
+                    </h2>
+
+                    <p>
+                        Expert Trainers
+                    </p>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <h2>
+                        50+
+                    </h2>
+
+                    <p>
+                        Equipment
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT PREVIEW
+        ===================================================== -->
+
+        <section class="intro">
+
+
+            <div class="intro-image"></div>
+
+
+            <div>
+
+                <div class="section-label">
+                    WHY IRONCORE?
+                </div>
+
+
+                <h2>
+
+                    MORE THAN A GYM.
+                    <br>
+
+                    IT'S A
+                    <span style="color:#ff3c00;">
+                        LIFESTYLE.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    IRONCORE FITNESS is designed for people who
+                    are serious about their health, strength and
+                    personal transformation.
+
+                </p>
+
+
+                <p>
+
+                    Whether you're just starting your fitness
+                    journey or you're an experienced athlete,
+                    we have the environment and support you need.
+
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Premium workout equipment
+                    </li>
+
+                    <li>
+                        Certified professional trainers
+                    </li>
+
+                    <li>
+                        Personalized workout programs
+                    </li>
+
+                    <li>
+                        Clean and motivating environment
+                    </li>
+
+                    <li>
+                        Flexible membership plans
+                    </li>
+
+                </ul>
+
+
+                <a
+                    href="about.html"
+                    class="primary-btn">
+
+                    KNOW MORE
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================================
+             SERVICES
+        ===================================================== -->
+
+        <section class="services">
+
+
+            <div class="services-container">
+
+
+                <div class="services-heading">
+
+                    <div class="section-label">
+                        WHAT WE OFFER
+                    </div>
+
+                    <h2>
+                        OUR
+                        <span style="color:#ff3c00;">
+                            SERVICES
+                        </span>
+                    </h2>
+
+                </div>
+
+
+                <div class="service-grid">
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            🏋️
+                        </div>
+
+                        <h3>
+                            Strength Training
+                        </h3>
+
+                        <p>
+
+                            Build muscle, improve strength and
+                            develop powerful training habits with
+                            professional equipment.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            🔥
+                        </div>
+
+                        <h3>
+                            Personal Training
+                        </h3>
+
+                        <p>
+
+                            Get personalized guidance from our
+                            experienced trainers and follow a
+                            structured fitness program.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-card">
+
+                        <div class="service-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Cardio & Fitness
+                        </h3>
+
+                        <p>
+
+                            Improve stamina, endurance and overall
+                            fitness with dedicated cardio and
+                            functional training zones.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div style="
+                    text-align:center;
+                    margin-top:40px;
+                ">
+
+                    <a
+                        href="services.html"
+                        class="primary-btn">
+
+                        VIEW ALL SERVICES
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CTA
+        ===================================================== -->
+
+        <section class="cta">
+
+
+            <h2>
+
+                YOUR TRANSFORMATION
+                <br>
+
+                STARTS
+                <span style="color:#ff3c00;">
+                    TODAY.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Stop waiting for the perfect time.
+                Start building the stronger version of yourself.
+
+            </p>
+
+
+            <a
+                href="subscription.html"
+                class="primary-btn">
+
+                VIEW MEMBERSHIP PLANS
+
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+
+        <div class="footer-container">
+
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+                    IRONCORE FITNESS
+                </div>
+
+                <p>
+
+                    A modern fitness center dedicated to helping
+                    you build strength, confidence and a healthier
+                    lifestyle.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="subscription.html">
+                            Subscription
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Membership
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="subscription.html">
+                            Membership Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="subscription.html">
+                            Join Now
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="payment.html">
+                            Payment
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 IRONCORE FITNESS.
+            All Rights Reserved.
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =====================================================
+         CURSOR JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        const cursorGlow =
+            document.getElementById("cursorGlow");
+
+        document.addEventListener("mousemove", function(e) {
+
+            cursorGlow.style.left = e.clientX + "px";
+
+            cursorGlow.style.top = e.clientY + "px";
+
+        });
+
+
+        /*
+            Small orange particles appear where
+            the dumbbell cursor moves.
+        */
+
+        document.addEventListener("mousemove", function(e) {
+
+            const particle =
+                document.createElement("span");
+
+            particle.style.position = "fixed";
+
+            particle.style.left =
+                e.clientX + "px";
+
+            particle.style.top =
+                e.clientY + "px";
+
+            particle.style.width = "4px";
+
+            particle.style.height = "4px";
+
+            particle.style.background =
+                "#ff3c00";
+
+            particle.style.borderRadius =
+                "50%";
+
+            particle.style.pointerEvents =
+                "none";
+
+            particle.style.zIndex =
+                "9998";
+
+            particle.style.boxShadow =
+                "0 0 10px #ff3c00";
+
+            document.body.appendChild(particle);
+
+
+            particle.animate(
+
+                [
+                    {
+                        transform:
+                            "translate(0,0) scale(1)",
+
+                        opacity: 1
+                    },
+
+                    {
+                        transform:
+                            "translate(" +
+                            (Math.random() * 30 - 15) +
+                            "px," +
+                            (Math.random() * 30 - 15) +
+                            "px) scale(0)",
+
+                        opacity: 0
+                    }
+                ],
+
+                {
+                    duration: 500,
+
+                    easing: "ease-out"
+                }
+
+            );
+
+
+            setTimeout(() => {
+
+                particle.remove();
+
+            }, 500);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

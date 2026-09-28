@@ -1,0 +1,2735 @@
+\<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Membership Plans | IRONCORE FITNESS</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #050505;
+
+            color: white;
+
+            overflow-x: hidden;
+
+
+            /* =================================================
+               DUMBBELL CURSOR
+            ================================================= */
+
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg transform='rotate(-25 20 20)' fill='%23ff3c00' stroke='white' stroke-width='1.5'%3E%3Crect x='5' y='12' width='5' height='16' rx='1'/%3E%3Crect x='30' y='12' width='5' height='16' rx='1'/%3E%3Crect x='10' y='16' width='20' height='8' rx='2'/%3E%3Crect x='2' y='9' width='4' height='22' rx='1'/%3E%3Crect x='34' y='9' width='4' height='22' rx='1'/%3E%3C/g%3E%3C/svg%3E") 20 20, auto;
+        }
+
+
+        /* =====================================================
+           BACKGROUND GLOW
+        ===================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -5;
+
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(255,60,0,0.15),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 40%,
+                    rgba(255,60,0,0.10),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 50% 90%,
+                    rgba(255,60,0,0.08),
+                    transparent 35%
+                );
+
+
+            animation:
+                backgroundGlow
+                8s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+
+        @keyframes backgroundGlow {
+
+            from {
+
+                transform: scale(1);
+
+                opacity: 0.6;
+
+            }
+
+            to {
+
+                transform: scale(1.08);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOVING GRID
+        ===================================================== */
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -4;
+
+            opacity: 0.10;
+
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,60,0,0.18) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,60,0,0.18) 1px,
+                    transparent 1px
+                );
+
+
+            background-size: 80px 80px;
+
+
+            animation:
+                gridMove
+                15s
+                linear
+                infinite;
+        }
+
+
+        @keyframes gridMove {
+
+            from {
+
+                background-position:
+                    0 0;
+
+            }
+
+            to {
+
+                background-position:
+                    80px 80px;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PARTICLES
+        ===================================================== */
+
+        .particles {
+
+            position: fixed;
+
+            inset: 0;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: -2;
+        }
+
+
+        .particle {
+
+            position: absolute;
+
+            width: 4px;
+
+            height: 4px;
+
+            border-radius: 50%;
+
+            background: #ff3c00;
+
+
+            box-shadow:
+
+                0 0 8px #ff3c00,
+
+                0 0 20px
+                rgba(255,60,0,0.7);
+
+
+            opacity: 0;
+
+
+            animation:
+                floatingParticle
+                linear
+                infinite;
+        }
+
+
+        .particle:nth-child(1) {
+            left: 5%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(2) {
+            left: 15%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(3) {
+            left: 25%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(4) {
+            left: 35%;
+            animation-duration: 14s;
+            animation-delay: 5s;
+        }
+
+        .particle:nth-child(5) {
+            left: 45%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(6) {
+            left: 55%;
+            animation-duration: 13s;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(7) {
+            left: 65%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(8) {
+            left: 75%;
+            animation-duration: 15s;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(9) {
+            left: 85%;
+            animation-duration: 10s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(10) {
+            left: 95%;
+            animation-duration: 12s;
+            animation-delay: 5s;
+        }
+
+
+        @keyframes floatingParticle {
+
+            0% {
+
+                transform:
+                    translateY(110vh)
+                    scale(0);
+
+                opacity: 0;
+
+            }
+
+            15% {
+
+                opacity: 1;
+
+            }
+
+            80% {
+
+                opacity: 0.8;
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(-10vh)
+                    scale(1.5);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CURSOR GLOW
+        ===================================================== */
+
+        #cursorGlow {
+
+            position: fixed;
+
+            width: 120px;
+
+            height: 120px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            transform:
+                translate(-50%, -50%);
+
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(255,60,0,0.18),
+                    transparent 65%
+                );
+
+
+            z-index: 9999;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        header {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 78px;
+
+            z-index: 1000;
+
+
+            background:
+                rgba(5,5,5,0.85);
+
+
+            backdrop-filter:
+                blur(15px);
+
+
+            border-bottom:
+                1px solid
+                rgba(255,60,0,0.18);
+        }
+
+
+        nav {
+
+            max-width: 1200px;
+
+            height: 100%;
+
+            margin: auto;
+
+            padding:
+                0 25px;
+
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo {
+
+            text-decoration: none;
+
+            color: #ff3c00;
+
+            font-size: 25px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+
+            text-shadow:
+                0 0 10px
+                rgba(255,60,0,0.5);
+        }
+
+
+        .logo span {
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 35px;
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            color: #ddd;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #ff3c00;
+
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -8px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #ff3c00;
+
+
+            box-shadow:
+                0 0 10px
+                #ff3c00;
+
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+        /* ACTIVE */
+
+        .nav-links .active {
+
+            color: #ff3c00;
+
+        }
+
+
+        .nav-links .active::after {
+
+            width: 100%;
+
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .join-btn,
+        .primary-btn {
+
+            display: inline-block;
+
+            padding:
+                14px 26px;
+
+            background:
+                #ff3c00;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            border-radius: 5px;
+
+
+            transition: 0.3s;
+
+
+            box-shadow:
+                0 0 15px
+                rgba(255,60,0,0.25);
+        }
+
+
+        .join-btn:hover,
+        .primary-btn:hover {
+
+            background:
+                #ff521b;
+
+            transform:
+                translateY(-3px);
+
+
+            box-shadow:
+                0 0 25px
+                rgba(255,60,0,0.55);
+        }
+
+
+        /* =====================================================
+           PAGE HERO
+        ===================================================== */
+
+        .page-hero {
+
+            min-height: 62vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+
+            position: relative;
+
+            overflow: hidden;
+
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.94)
+                ),
+
+                url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=90");
+
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+
+        .page-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+
+            height: 550px;
+
+            background:
+                #ff3c00;
+
+            filter:
+                blur(180px);
+
+            opacity: 0.12;
+
+            border-radius: 50%;
+
+
+            animation:
+                heroGlow
+                5s
+                ease-in-out
+                infinite
+                alternate;
+        }
+
+
+        @keyframes heroGlow {
+
+            from {
+
+                transform:
+                    scale(0.8);
+
+                opacity:
+                    0.08;
+
+            }
+
+            to {
+
+                transform:
+                    scale(1.1);
+
+                opacity:
+                    0.18;
+
+            }
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            padding:
+                120px 20px 50px;
+        }
+
+
+        .hero-label {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                14px;
+
+            font-weight:
+                bold;
+
+            letter-spacing:
+                5px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .page-hero h1 {
+
+            font-size:
+                clamp(48px,8vw,90px);
+
+            line-height:
+                0.95;
+
+            text-transform:
+                uppercase;
+
+            font-weight:
+                900;
+        }
+
+
+        .page-hero h1 span {
+
+            color:
+                #ff3c00;
+
+            text-shadow:
+                0 0 25px
+                rgba(255,60,0,0.5);
+        }
+
+
+        .page-hero p {
+
+            max-width:
+                700px;
+
+            margin:
+                25px auto 0;
+
+            color:
+                #bbb;
+
+            line-height:
+                1.7;
+
+            font-size:
+                18px;
+        }
+
+
+        /* =====================================================
+           SUBSCRIPTION SECTION
+        ===================================================== */
+
+        .subscription {
+
+            max-width:
+                1200px;
+
+            margin:
+                auto;
+
+            padding:
+                110px 25px;
+        }
+
+
+        .section-heading {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                55px;
+        }
+
+
+        .section-label {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                4px;
+
+            font-weight:
+                bold;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                45px;
+
+            margin-top:
+                12px;
+        }
+
+
+        .section-heading h2 span {
+
+            color:
+                #ff3c00;
+        }
+
+
+        .section-heading p {
+
+            max-width:
+                650px;
+
+            margin:
+                15px auto 0;
+
+            color:
+                #888;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =====================================================
+           PLANS
+        ===================================================== */
+
+        .plans {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap:
+                25px;
+
+            align-items:
+                stretch;
+        }
+
+
+        .plan {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181818,
+                    #0c0c0c
+                );
+
+
+            border:
+                1px solid #292929;
+
+            border-radius:
+                10px;
+
+            padding:
+                40px 30px;
+
+            transition:
+                0.4s;
+        }
+
+
+        .plan:hover {
+
+            transform:
+                translateY(-10px);
+
+            border-color:
+                #ff3c00;
+
+            box-shadow:
+                0 20px 50px
+                rgba(255,60,0,0.14);
+        }
+
+
+        /* TOP GLOW */
+
+        .plan::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                160px;
+
+            height:
+                160px;
+
+            right:
+                -70px;
+
+            top:
+                -70px;
+
+            background:
+                #ff3c00;
+
+            filter:
+                blur(65px);
+
+            opacity:
+                0;
+
+            transition:
+                0.4s;
+        }
+
+
+        .plan:hover::before {
+
+            opacity:
+                0.25;
+        }
+
+
+        /* =====================================================
+           POPULAR PLAN
+        ===================================================== */
+
+        .plan.popular {
+
+            border:
+                1px solid
+                #ff3c00;
+
+            transform:
+                translateY(-15px);
+
+            box-shadow:
+                0 20px 60px
+                rgba(255,60,0,0.13);
+        }
+
+
+        .popular-badge {
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                #ff3c00;
+
+            color:
+                white;
+
+            padding:
+                8px 20px;
+
+            border-radius:
+                0 0 6px 6px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
+
+            letter-spacing:
+                1px;
+        }
+
+
+        /* =====================================================
+           PLAN CONTENT
+        ===================================================== */
+
+        .plan-name {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                14px;
+
+            letter-spacing:
+                3px;
+
+            font-weight:
+                bold;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .plan h3 {
+
+            font-size:
+                28px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .price {
+
+            font-size:
+                50px;
+
+            font-weight:
+                900;
+
+            margin:
+                20px 0 5px;
+
+            color:
+                white;
+        }
+
+
+        .price span {
+
+            color:
+                #777;
+
+            font-size:
+                15px;
+
+            font-weight:
+                normal;
+        }
+
+
+        .plan-description {
+
+            color:
+                #888;
+
+            line-height:
+                1.6;
+
+            min-height:
+                55px;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features {
+
+            list-style:
+                none;
+
+            margin:
+                25px 0 30px;
+
+            border-top:
+                1px solid #292929;
+
+            padding-top:
+                20px;
+        }
+
+
+        .features li {
+
+            color:
+                #ccc;
+
+            margin-bottom:
+                15px;
+
+            font-size:
+                15px;
+        }
+
+
+        .features li::before {
+
+            content:
+                "✓";
+
+            color:
+                #ff3c00;
+
+            font-weight:
+                bold;
+
+            margin-right:
+                10px;
+        }
+
+
+        /* =====================================================
+           PLAN BUTTON
+        ===================================================== */
+
+        .plan-btn {
+
+            width:
+                100%;
+
+            text-align:
+                center;
+
+            cursor:
+                inherit;
+        }
+
+
+        .plan-btn.secondary {
+
+            background:
+                transparent;
+
+            border:
+                1px solid #555;
+
+            box-shadow:
+                none;
+        }
+
+
+        .plan-btn.secondary:hover {
+
+            border-color:
+                #ff3c00;
+
+            color:
+                #ff3c00;
+
+            background:
+                transparent;
+        }
+
+
+        /* =====================================================
+           MEMBERSHIP NOTE
+        ===================================================== */
+
+        .membership-note {
+
+            margin-top:
+                50px;
+
+            padding:
+                25px;
+
+            background:
+                rgba(255,60,0,0.05);
+
+            border:
+                1px solid
+                rgba(255,60,0,0.18);
+
+            border-radius:
+                8px;
+
+            text-align:
+                center;
+        }
+
+
+        .membership-note p {
+
+            color:
+                #999;
+
+            line-height:
+                1.7;
+
+            font-size:
+                14px;
+        }
+
+
+        .membership-note strong {
+
+            color:
+                #ff3c00;
+        }
+
+
+        /* =====================================================
+           COMPARISON SECTION
+        ===================================================== */
+
+        .comparison {
+
+            background:
+                #0d0d0d;
+
+            padding:
+                100px 25px;
+
+            border-top:
+                1px solid
+                rgba(255,60,0,0.12);
+
+            border-bottom:
+                1px solid
+                rgba(255,60,0,0.12);
+        }
+
+
+        .comparison-container {
+
+            max-width:
+                1000px;
+
+            margin:
+                auto;
+        }
+
+
+        .comparison-heading {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                40px;
+        }
+
+
+        .comparison-heading h2 {
+
+            font-size:
+                40px;
+        }
+
+
+        .comparison-heading h2 span {
+
+            color:
+                #ff3c00;
+        }
+
+
+        .table-wrapper {
+
+            overflow-x:
+                auto;
+        }
+
+
+        table {
+
+            width:
+                100%;
+
+            border-collapse:
+                collapse;
+
+            min-width:
+                650px;
+        }
+
+
+        th,
+        td {
+
+            padding:
+                18px;
+
+            text-align:
+                center;
+
+            border-bottom:
+                1px solid #292929;
+        }
+
+
+        th {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                14px;
+
+            letter-spacing:
+                1px;
+        }
+
+
+        td {
+
+            color:
+                #aaa;
+
+            font-size:
+                14px;
+        }
+
+
+        td:first-child {
+
+            text-align:
+                left;
+
+            color:
+                #ddd;
+
+            font-weight:
+                bold;
+        }
+
+
+        .yes {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                18px;
+        }
+
+
+        .no {
+
+            color:
+                #555;
+
+            font-size:
+                18px;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+
+            padding:
+                110px 25px;
+
+            text-align:
+                center;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+
+            background:
+
+                linear-gradient(
+                    rgba(0,0,0,0.78),
+                    rgba(0,0,0,0.92)
+                ),
+
+                url("https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=2000&q=90");
+
+
+            background-size:
+                cover;
+
+            background-position:
+                center;
+
+            background-attachment:
+                fixed;
+        }
+
+
+        .cta h2 {
+
+            font-size:
+                clamp(38px,5vw,55px);
+
+            text-transform:
+                uppercase;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .cta h2 span {
+
+            color:
+                #ff3c00;
+        }
+
+
+        .cta p {
+
+            color:
+                #ccc;
+
+            font-size:
+                18px;
+
+            margin-bottom:
+                30px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background:
+                #050505;
+
+            padding:
+                60px 25px 25px;
+
+            border-top:
+                1px solid #222;
+        }
+
+
+        .footer-container {
+
+            max-width:
+                1200px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr;
+
+            gap:
+                50px;
+        }
+
+
+        .footer-logo {
+
+            color:
+                #ff3c00;
+
+            font-size:
+                25px;
+
+            font-weight:
+                900;
+        }
+
+
+        .footer-about p {
+
+            color:
+                #777;
+
+            line-height:
+                1.7;
+
+            margin-top:
+                15px;
+
+            max-width:
+                400px;
+        }
+
+
+        footer h3 {
+
+            margin-bottom:
+                20px;
+        }
+
+
+        footer ul {
+
+            list-style:
+                none;
+        }
+
+
+        footer li {
+
+            margin-bottom:
+                12px;
+        }
+
+
+        footer a {
+
+            color:
+                #888;
+
+            text-decoration:
+                none;
+
+            transition:
+                0.3s;
+        }
+
+
+        footer a:hover {
+
+            color:
+                #ff3c00;
+        }
+
+
+        .copyright {
+
+            max-width:
+                1200px;
+
+            margin:
+                50px auto 0;
+
+            padding-top:
+                20px;
+
+            border-top:
+                1px solid #222;
+
+            text-align:
+                center;
+
+            color:
+                #555;
+
+            font-size:
+                14px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+
+                gap:
+                    15px;
+            }
+
+
+            .join-btn {
+
+                display:
+                    none;
+            }
+
+
+            .plans {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .plan.popular {
+
+                transform:
+                    none;
+            }
+
+
+            .plan.popular:hover {
+
+                transform:
+                    translateY(-10px);
+            }
+
+
+            .footer-container {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+
+            nav {
+
+                padding:
+                    0 15px;
+            }
+
+
+            .logo {
+
+                font-size:
+                    19px;
+            }
+
+
+            .nav-links {
+
+                gap:
+                    10px;
+            }
+
+
+            .nav-links a {
+
+                font-size:
+                    11px;
+            }
+
+
+            .page-hero h1 {
+
+                font-size:
+                    52px;
+            }
+
+
+            .section-heading h2 {
+
+                font-size:
+                    35px;
+            }
+
+
+            .comparison-heading h2 {
+
+                font-size:
+                    35px;
+            }
+
+
+            .price {
+
+                font-size:
+                    45px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         PARTICLES
+    ===================================================== -->
+
+    <div class="particles">
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+        <div class="particle"></div>
+
+    </div>
+
+
+    <!-- CURSOR GLOW -->
+
+    <div id="cursorGlow"></div>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header>
+
+        <nav>
+
+
+            <a
+                href="index.html"
+                class="logo">
+
+                IRON<span>CORE</span>
+
+            </a>
+
+
+            <ul class="nav-links">
+
+
+                <li>
+
+                    <a href="index.html">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="about.html">
+
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="services.html">
+
+                        Services
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="subscription.html"
+                        class="active">
+
+                        Subscription
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+
+            <a
+                href="subscription.html"
+                class="join-btn">
+
+                JOIN NOW
+
+            </a>
+
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         PAGE HERO
+    ===================================================== -->
+
+    <section class="page-hero">
+
+
+        <div class="hero-content">
+
+
+            <div class="hero-label">
+
+                CHOOSE YOUR PLAN
+
+            </div>
+
+
+            <h1>
+
+                MEMBERSHIP
+                <span>
+                    PLANS
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Choose a membership that fits your goals,
+                your lifestyle and your commitment to becoming
+                stronger.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         SUBSCRIPTION
+    ===================================================== -->
+
+    <section class="subscription">
+
+
+        <div class="section-heading">
+
+
+            <div class="section-label">
+
+                MEMBERSHIP OPTIONS
+
+            </div>
+
+
+            <h2>
+
+                FIND YOUR
+                <span>
+                    PERFECT PLAN
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Every membership gives you access to the
+                IRONCORE environment. Choose the level of
+                support that works best for you.
+
+            </p>
+
+
+        </div>
+
+
+        <!-- =================================================
+             PLANS
+        ================================================= -->
+
+        <div class="plans">
+
+
+            <!-- BASIC -->
+
+            <div class="plan">
+
+
+                <div class="plan-name">
+
+                    STARTER
+
+                </div>
+
+
+                <h3>
+
+                    Basic
+
+                </h3>
+
+
+                <div class="price">
+
+                    ₹999
+
+                    <span>
+                        / month
+                    </span>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    Perfect for beginners who want to start
+                    their fitness journey.
+
+                </p>
+
+
+                <ul class="features">
+
+
+                    <li>
+                        Full Gym Access
+                    </li>
+
+
+                    <li>
+                        Cardio Area
+                    </li>
+
+
+                    <li>
+                        Strength Equipment
+                    </li>
+
+
+                    <li>
+                        Locker Facility
+                    </li>
+
+
+                    <li>
+                        General Workout Guidance
+                    </li>
+
+
+                </ul>
+
+
+                <!-- WILL CONNECT TO PAYMENT LATER -->
+
+                <a
+                    href="payment.html?plan=basic"
+                    class="primary-btn plan-btn">
+
+                    CHOOSE BASIC
+
+                </a>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 PRO
+            ================================================= -->
+
+            <div class="plan popular">
+
+
+                <div class="popular-badge">
+
+                    MOST POPULAR
+
+                </div>
+
+
+                <div class="plan-name">
+
+                    TRANSFORM
+
+                </div>
+
+
+                <h3>
+
+                    Pro
+
+                </h3>
+
+
+                <div class="price">
+
+                    ₹1,999
+
+                    <span>
+                        / month
+                    </span>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    Designed for members who want structured
+                    training and additional guidance.
+
+                </p>
+
+
+                <ul class="features">
+
+
+                    <li>
+                        Full Gym Access
+                    </li>
+
+
+                    <li>
+                        Cardio & Strength Zones
+                    </li>
+
+
+                    <li>
+                        Personal Training Sessions
+                    </li>
+
+
+                    <li>
+                        Customized Workout Plan
+                    </li>
+
+
+                    <li>
+                        Diet Guidance
+                    </li>
+
+
+                    <li>
+                        Progress Tracking
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="payment.html?plan=pro"
+                    class="primary-btn plan-btn">
+
+                    CHOOSE PRO
+
+                </a>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 ELITE
+            ================================================= -->
+
+            <div class="plan">
+
+
+                <div class="plan-name">
+
+                    ELITE
+
+                </div>
+
+
+                <h3>
+
+                    Premium
+
+                </h3>
+
+
+                <div class="price">
+
+                    ₹2,999
+
+                    <span>
+                        / month
+                    </span>
+
+                </div>
+
+
+                <p class="plan-description">
+
+                    Maximum support for serious fitness and
+                    transformation goals.
+
+                </p>
+
+
+                <ul class="features">
+
+
+                    <li>
+                        Unlimited Gym Access
+                    </li>
+
+
+                    <li>
+                        Dedicated Personal Trainer
+                    </li>
+
+
+                    <li>
+                        Personalized Workout Plan
+                    </li>
+
+
+                    <li>
+                        Personalized Diet Plan
+                    </li>
+
+
+                    <li>
+                        Weekly Progress Review
+                    </li>
+
+
+                    <li>
+                        Priority Trainer Support
+                    </li>
+
+
+                </ul>
+
+
+                <a
+                    href="payment.html?plan=premium"
+                    class="primary-btn plan-btn">
+
+                    CHOOSE PREMIUM
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             NOTE
+        ================================================= -->
+
+        <div class="membership-note">
+
+
+            <p>
+
+                <strong>
+                    Secure payment coming next.
+                </strong>
+
+                After selecting a plan, you'll be taken to
+                our payment page. We'll connect the real
+                payment gateway there so membership payments
+                can be processed securely.
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         COMPARISON
+    ===================================================== -->
+
+    <section class="comparison">
+
+
+        <div class="comparison-container">
+
+
+            <div class="comparison-heading">
+
+
+                <div class="section-label">
+
+                    COMPARE PLANS
+
+                </div>
+
+
+                <h2>
+
+                    WHAT'S
+                    <span>
+                        INCLUDED?
+                    </span>
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                FEATURE
+                            </th>
+
+                            <th>
+                                BASIC
+                            </th>
+
+                            <th>
+                                PRO
+                            </th>
+
+                            <th>
+                                PREMIUM
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr>
+
+                            <td>
+                                Gym Access
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Cardio Equipment
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Personal Training
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Custom Workout Plan
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Diet Guidance
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Progress Tracking
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Dedicated Trainer
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="no">
+                                —
+                            </td>
+
+                            <td class="yes">
+                                ✓
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ===================================================== -->
+
+    <section class="cta">
+
+
+        <h2>
+
+            YOUR BEST SELF
+            <br>
+
+            STARTS
+            <span>
+                HERE.
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            Choose your plan today and take the first step
+            toward your transformation.
+
+        </p>
+
+
+        <a
+            href="#plans"
+            class="primary-btn">
+
+            JOIN IRONCORE
+
+        </a>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+
+        <div class="footer-container">
+
+
+            <div class="footer-about">
+
+
+                <div class="footer-logo">
+
+                    IRONCORE FITNESS
+
+                </div>
+
+
+                <p>
+
+                    A modern fitness center dedicated to
+                    helping you build strength, confidence
+                    and a healthier lifestyle.
+
+                </p>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <ul>
+
+
+                    <li>
+
+                        <a href="index.html">
+                            Home
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="about.html">
+                            About
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="services.html">
+                            Services
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="subscription.html">
+                            Subscription
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+            <div>
+
+
+                <h3>
+                    Membership
+                </h3>
+
+
+                <ul>
+
+
+                    <li>
+
+                        <a href="subscription.html">
+                            Membership Plans
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="subscription.html">
+                            Join Now
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="payment.html">
+                            Payment
+                        </a>
+
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 IRONCORE FITNESS.
+            All Rights Reserved.
+
+        </div>
+
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           CURSOR GLOW
+        ================================================= */
+
+        const cursorGlow =
+            document.getElementById(
+                "cursorGlow"
+            );
+
+
+        document.addEventListener(
+            "mousemove",
+            function(e) {
+
+                cursorGlow.style.left =
+                    e.clientX + "px";
+
+                cursorGlow.style.top =
+                    e.clientY + "px";
+
+            }
+        );
+
+
+        /* =================================================
+           CURSOR PARTICLE TRAIL
+        ================================================= */
+
+        document.addEventListener(
+            "mousemove",
+            function(e) {
+
+
+                const particle =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                particle.style.position =
+                    "fixed";
+
+
+                particle.style.left =
+                    e.clientX + "px";
+
+
+                particle.style.top =
+                    e.clientY + "px";
+
+
+                particle.style.width =
+                    "4px";
+
+
+                particle.style.height =
+                    "4px";
+
+
+                particle.style.background =
+                    "#ff3c00";
+
+
+                particle.style.borderRadius =
+                    "50%";
+
+
+                particle.style.pointerEvents =
+                    "none";
+
+
+                particle.style.zIndex =
+                    "9998";
+
+
+                particle.style.boxShadow =
+                    "0 0 10px #ff3c00";
+
+
+                document.body.appendChild(
+                    particle
+                );
+
+
+                particle.animate(
+
+                    [
+
+                        {
+
+                            transform:
+                                "translate(0,0) scale(1)",
+
+                            opacity:
+                                1
+
+                        },
+
+                        {
+
+                            transform:
+                                "translate(" +
+                                (Math.random() * 30 - 15) +
+                                "px," +
+                                (Math.random() * 30 - 15) +
+                                "px) scale(0)",
+
+                            opacity:
+                                0
+
+                        }
+
+                    ],
+
+                    {
+
+                        duration:
+                            500,
+
+                        easing:
+                            "ease-out"
+
+                    }
+
+                );
+
+
+                setTimeout(
+
+                    () =>
+                        particle.remove(),
+
+                    500
+
+                );
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
